@@ -4,6 +4,7 @@
 [Unicorn](http://unicorn.bogomips.org/)
 
 This gem provides several mina tasks:
+
     mina unicorn:start           # Start unicorn
     mina unicorn:stop            # Stop unicorn
     mina unicorn:restart         # Restart unicorn (with zero-downtime)
