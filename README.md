@@ -4,6 +4,7 @@
 [Unicorn](http://unicorn.bogomips.org/)
 
 This gem provides several mina tasks:
+
     mina unicorn:start           # Start unicorn
     mina unicorn:stop            # Stop unicorn
     mina unicorn:restart         # Restart unicorn (with zero-downtime)
@@ -53,7 +54,7 @@ $ mina unicorn:start
 
 ## Contributing
 
-1. Fork it ( http://github.com/<my-github-username>/mina-unicorn/fork )
+1. Fork it ( http://github.com/openteam/mina-unicorn/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
