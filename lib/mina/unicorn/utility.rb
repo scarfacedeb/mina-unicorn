@@ -51,10 +51,10 @@ module Mina
       def kill_unicorn(signal)
         script = <<-END
           if #{unicorn_is_running?}; then
-            echo "Stopping Unicorn...";
+            echo "-----> Stopping Unicorn...";
             #{unicorn_send_signal(signal)};
           else
-            echo "Unicorn is not running.";
+            echo "-----> Unicorn is not running.";
           fi;
         END
 
@@ -67,14 +67,14 @@ module Mina
         %Q%
           if [ -e "#{unicorn_pid}" ]; then
             if kill -0 `cat #{unicorn_pid}` > /dev/null 2>&1; then
-              echo "Unicorn is already running!";
+              echo "-----> Unicorn is already running!";
               exit 0;
             fi;
 
             rm #{unicorn_pid};
           fi;
 
-          echo "Starting Unicorn...";
+          echo "-----> Starting Unicorn...";
           cd #{deploy_to}/#{current_path} && BUNDLE_GEMFILE=#{bundle_gemfile} #{unicorn_cmd} -c #{unicorn_config} -E #{unicorn_env} -D;
         %
       end
@@ -96,7 +96,7 @@ module Mina
       def duplicate_unicorn
         %Q%
           if #{unicorn_is_running?}; then
-            echo "Duplicating Unicorn...";
+            echo "-----> Duplicating Unicorn...";
             #{unicorn_send_signal('USR2')};
           else
             #{start_unicorn}
