@@ -11,6 +11,7 @@ namespace :unicorn do
   set_default :unicorn_pid,       -> { "#{deploy_to}/#{current_path}/tmp/pids/unicorn.pid"  }
   set_default :unicorn_cmd,       -> { "#{bundle_prefix} unicorn" }
   set_default :unicorn_restart_sleep_time, -> { 2 }
+  set_default :bundle_gemfile,    -> { "#{deploy_to}/#{current_path}/Gemfile" }
 
   desc "Start Unicorn master process"
   task start: :environment do
