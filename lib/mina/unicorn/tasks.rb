@@ -5,7 +5,8 @@ require 'mina/unicorn/utility'
 namespace :unicorn do
   include Mina::Unicorn::Utility
 
-  set_default :unicorn_env,       -> { fetch(:rails_env, 'production') }
+  # Following recommendations from http://unicorn.bogomips.org/unicorn_1.html#rack-environment
+  set_default :unicorn_env,       -> { fetch(:rails_env) == 'development' ? 'development' : 'deployment' }
   set_default :unicorn_config,    -> { "#{deploy_to}/#{current_path}/config/unicorn.rb" }
   set_default :unicorn_pid,       -> { "#{deploy_to}/#{current_path}/tmp/pids/unicorn.pid"  }
   set_default :unicorn_cmd,       -> { "#{bundle_prefix} unicorn" }
