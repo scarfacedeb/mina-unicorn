@@ -38,7 +38,7 @@ set :shared_paths, ['tmp/sockets', 'tmp/pids']
 You can also set individual config variables to override default values for
 unicorn:
 
-* `unicorn_env`    - set environment, default: `rails_env` setting or `production` otherwise
+* `unicorn_env`    - set environment, default: depending on `rails_env`: `development` or `deployment` (see: [Rack environment](http://unicorn.bogomips.org/unicorn_1.html#rack-environment))
 * `unicorn_config` - unicorn config file, default: `config/unicorn.rb`
 * `unicorn_cmd`    - bundle exec unicorn, default: `bundle exec unicorn`
 * `unicorn_pid`    - unicorn pid file, default: `tmp/pids/unicorn.pid`
