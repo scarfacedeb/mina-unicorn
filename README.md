@@ -29,22 +29,20 @@ Add this to your `config/deploy.rb` file:
 
     require 'mina/unicorn'
 
-Make sure the following settings are set in your `config/deploy.rb`:
+Make sure to add the following directories to `:shared_paths` in `config/deploy.rb`:
 
-* `deploy_to`   - deployment path
+```ruby
+set :shared_paths, ['tmp/sockets', 'tmp/pids']
+```
 
-Make sure the following directories exists on your server:
+You can also set individual config variables to override default values for
+unicorn:
 
-* `shared/tmp/sockets` - directory for socket files.
-* `shared/tmp/pids` - direcotry for pid files.
-
-OR you can set other directories by setting follow variables:
-
-* `unicorn_role`   - unicorn user
-* `unicorn_env`    - set environment
-* `unicorn_config` - unicorn config file
-* `unicorn_cmd`    - bundle exec unicorn
-* `unicorn_pid`    - unicorn pid file, default `shared/tmp/pids/unicorn.pid`
+* `unicorn_role`   - unicorn user, default: `user` setting
+* `unicorn_env`    - set environment, default: `rails_env` setting or `production` otherwise
+* `unicorn_config` - unicorn config file, default: `config/unicorn.rb`
+* `unicorn_cmd`    - bundle exec unicorn, default: `bundle exec unicorn`
+* `unicorn_pid`    - unicorn pid file, default: `tmp/pids/unicorn.pid`
 
 Then:
 
