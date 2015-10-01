@@ -9,7 +9,7 @@ namespace :unicorn do
   set_default :unicorn_env,       -> { fetch(:rails_env) == 'development' ? 'development' : 'deployment' }
   set_default :unicorn_config,    -> { "#{deploy_to}/#{current_path}/config/unicorn.rb" }
   set_default :unicorn_pid,       -> { "#{deploy_to}/#{current_path}/tmp/pids/unicorn.pid"  }
-  set_default :unicorn_cmd,       -> { "#{bundle_prefix} unicorn" }
+  set_default :unicorn_cmd,       -> { "#{deploy_to}/#{current_path}/#{bundle_prefix} unicorn" }
   set_default :unicorn_restart_sleep_time, -> { 2 }
   set_default :bundle_gemfile,    -> { "#{deploy_to}/#{current_path}/Gemfile" }
 
