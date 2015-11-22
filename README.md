@@ -41,7 +41,7 @@ unicorn:
 * `unicorn_env`    - set unicorn environment, default: depending on `rails_env`: `development` or `deployment` (see: [Rack environment](http://unicorn.bogomips.org/unicorn_1.html#rack-environment))
 * `rails_env`      - set rails environment, default: `production`
 * `unicorn_config` - unicorn config file, default: `config/unicorn.rb`
-* `unicorn_cmd`    - bundle exec unicorn, default: `bundle exec unicorn`
+* `unicorn_cmd`    - bundle exec unicorn, default: `RAILS_ENV=production bundle exec unicorn` (see: [mina/rails](https://github.com/mina-deploy/mina/blob/master/lib%2Fmina%2Frails.rb#L25))
 * `unicorn_pid`    - unicorn pid file, default: `tmp/pids/unicorn.pid`
 
 Then:
