@@ -8,6 +8,10 @@ This gem provides several mina tasks:
     mina unicorn:start           # Start unicorn
     mina unicorn:stop            # Stop unicorn
     mina unicorn:restart         # Restart unicorn (with zero-downtime)
+    mina unicorn:access_log      # Tail log from server (default file name is unicorn.stdout.log)
+    # main unicorn:access_log['the-log-file-name']
+    mina unicorn:error_log       # Tail log from server (default file name is unicorn.stderr.log)
+    # main unicorn:error_log['the-log-file-name']
 
 ## Installation
 
