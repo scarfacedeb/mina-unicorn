@@ -82,6 +82,7 @@ module Mina
           fi;
 
           echo "-----> Starting Unicorn...";
+          ls -l #{deploy_to}/#{current_path};
           cd #{deploy_to}/#{current_path} && #{try_unicorn_user} BUNDLE_GEMFILE=#{bundle_gemfile} #{unicorn_cmd} -c #{unicorn_config} -E #{unicorn_env} -D;
         %
       end
