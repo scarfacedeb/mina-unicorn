@@ -1,0 +1,3 @@
+[submodule "test/unicorn_test"]
+	path = test/unicorn_test
+	url = git@github.com:scarfacedeb/mina-unicorn-test.git
