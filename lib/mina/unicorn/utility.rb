@@ -15,7 +15,7 @@ module Mina
           fi;
 
           echo "-----> Starting Unicorn...";
-          cd #{fetch(:current_path)} && #{unicorn_user} BUNDLE_GEMFILE=#{fetch(:bundle_gemfile)} #{fetch(:unicorn_cmd)} -c #{fetch(:unicorn_config)} -E #{fetch(:unicorn_env)} -D;
+          cd #{fetch(:current_path)} && #{unicorn_user} BUNDLE_GEMFILE=#{fetch(:bundle_gemfile)} #{fetch(:unicorn_cmd)} -c #{fetch(:unicorn_config)} -E #{fetch(:unicorn_env)} -D
         }
       end
 
@@ -26,7 +26,7 @@ module Mina
             #{unicorn_send_signal(signal)};
           else
             echo "-----> Unicorn is not running.";
-          fi;
+          fi
         }
       end
 
@@ -38,7 +38,7 @@ module Mina
 
           if #{old_unicorn_is_running?}; then
             #{unicorn_send_signal("QUIT", get_old_unicorn_pid)};
-          fi;
+          fi
         }
       end
 
@@ -68,7 +68,7 @@ module Mina
             #{unicorn_send_signal("USR2")};
           else
             #{start_unicorn}
-          fi;
+          fi
         }
       end
 
