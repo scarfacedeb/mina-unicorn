@@ -1,5 +1,5 @@
 require "mina/bundler"
-require "mina/rails"
+require "mina/deploy"
 require "mina/unicorn/utility"
 
 namespace :unicorn do
