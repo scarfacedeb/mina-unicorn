@@ -1,12 +1,12 @@
 require "mina/bundler"
-require "mina/rails"
+require 'mina/deploy'
 require "mina/unicorn/utility"
 
 namespace :unicorn do
   include Mina::Unicorn::Utility
 
   # Following recommendations from http://unicorn.bogomips.org/unicorn_1.html#rack-environment
-  set :unicorn_env,       -> { fetch(:rails_env) == "development" ? "development" : "deployment" }
+  set :unicorn_env,       -> { fetch(:rails_env).to_s == "development" ? "development" : "deployment" }
   set :unicorn_config,    -> { "#{fetch(:current_path)}/config/unicorn.rb" }
   set :unicorn_pid,       -> { "#{fetch(:current_path)}/tmp/pids/unicorn.pid" }
   set :unicorn_cmd,       -> { "#{fetch(:bundle_prefix)} unicorn" }
