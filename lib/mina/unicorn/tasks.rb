@@ -14,22 +14,22 @@ namespace :unicorn do
   set :bundle_gemfile,    -> { "#{fetch(:current_path)}/Gemfile" }
 
   desc "Start Unicorn master process"
-  task start: :environment do
+  task start: :remote_environment do
     command start_unicorn
   end
 
   desc "Stop Unicorn"
-  task stop: :environment do
+  task stop: :remote_environment do
     command kill_unicorn("QUIT")
   end
 
   desc "Immediately shutdown Unicorn"
-  task shutdown: :environment do
+  task shutdown: :remote_environment do
     command kill_unicorn("TERM")
   end
 
   desc "Restart unicorn service"
-  task restart: :environment do
+  task restart: :remote_environment do
     command restart_unicorn
   end
 end
