@@ -32,4 +32,15 @@ namespace :unicorn do
   task restart: :remote_environment do
     command restart_unicorn
   end
+
+  desc "Tail error log from server"
+  task :error_log, [:fname] => :environment do |_, args|
+    queue %[tail -f #{deploy_to}/#{current_path}/log/#{args.nil? ? 'unicorn.stderr.log' : args[:fname]}]
+  end
+
+  desc "Tail access log from server"
+  task :access_log, [:fname] => :environment do |_, args|
+    queue %[tail -f #{deploy_to}/#{current_path}/log/#{args.nil? ? 'unicorn.stdout.log' : args[:fname]}]
+  end
+
 end
