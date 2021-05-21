@@ -46,6 +46,17 @@ module Mina
       def unicorn_send_signal(signal, pid=get_unicorn_pid)
         "#{unicorn_user} kill -s #{signal} #{pid}"
       end
+      
+      def duplicate_unicorn
+        %{
+          if #{unicorn_is_running?}; then
+            echo "-----> Duplicating Unicorn...";
+            #{unicorn_send_signal("USR2")};
+          else
+            #{start_unicorn}
+          fi
+        }
+      end
 
       private
 
@@ -59,17 +70,6 @@ module Mina
       #
       def remote_process_exists?(pid_file)
         "[ -e #{pid_file} ] && #{unicorn_user} kill -0 `cat #{pid_file}` > /dev/null 2>&1"
-      end
-
-      def duplicate_unicorn
-        %{
-          if #{unicorn_is_running?}; then
-            echo "-----> Duplicating Unicorn...";
-            #{unicorn_send_signal("USR2")};
-          else
-            #{start_unicorn}
-          fi
-        }
       end
 
       # Command to check if Unicorn is running
