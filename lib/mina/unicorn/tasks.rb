@@ -33,7 +33,7 @@ namespace :unicorn do
   end
 
   desc "Duplicate unicorn service (this does not kill the old master)"
-  task restart: :remote_environment do
+  task duplicate: :remote_environment do
     command duplicate_unicorn
   end
 end
